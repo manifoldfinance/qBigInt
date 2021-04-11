@@ -13,10 +13,10 @@ Install GMP library with get_gmp.sh
 
 [GMP library website](https://gmplib.org/)
 
-Compile C bigint libraries (examples)
+Compile C bigint libraries (examples for 64 bit kdb)
 
 - Windows dll compilation using VS: cl /LD /DKXVER=3 bigint.c bigint.def q.lib -lgmp
-- Linux so compilation using gcc: gcc -m32 -D KXVER=3 -Wall -fno-strict-aliasing -Wno-parentheses -g -O2 -shared -fPIC -o bigint.so bigint.c -lgmp
+- Linux so compilation using gcc: gcc -D KXVER=3 -Wall -fno-strict-aliasing -Wno-parentheses -g -O2 -shared -fPIC -o bigint.so bigint.c -lgmp
 - Mac so compilation using gcc: gcc -bundle -undefined dynamic_lookup bigint.c -o bigint.so -lgmp
 
 ## Load function in kdb
