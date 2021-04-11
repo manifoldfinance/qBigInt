@@ -27,7 +27,7 @@ bigSub:`bigint 2:(`sub;3)
 
 bigMul:`bigint 2:(`mul;3)
 
-bigDiv:`bigint 2:(`div;3)
+bigDiv:`bigint 2:(`divy;3)
 
 bigCmp:`bigint 2:(`cmp;3)
 ```
