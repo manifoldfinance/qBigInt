@@ -2,5 +2,5 @@ EXPORTS
 add
 sub
 mul
-div
+divy
 cmp
