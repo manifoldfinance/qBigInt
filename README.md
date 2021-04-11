@@ -61,7 +61,7 @@ z = 4ee2d6d415b85acef80ffffff01
 
 "4ee2d6d415b85acef80ffffff01"
 
-q)bigMul[x;y;16]
+q)bigMul[x;y;base]
 base = 16
 x = 4ee2d6d415b85acef8100000000
 y = ff
@@ -69,7 +69,7 @@ z = 4e93f3fd41a2a2742917f00000000
 
 "4e93f3fd41a2a2742917f00000000"
 
-q)bigDiv[x;y;16]
+q)bigDiv[x;y;base]
 base = 16
 x = 4ee2d6d415b85acef8100000000
 y = ff
@@ -77,11 +77,11 @@ z = 4f3208dcf2ab05d4ccdcdcdcd
 
 "4f3208dcf2ab05d4ccdcdcdcd"
 
-q)bigCmp[x;y;16]
+q)bigCmp[x;y;base]
 3i
-q)bigCmp[y;x;16]
+q)bigCmp[y;x;base]
 -3i
-q)bigCmp[y;y;16]
+q)bigCmp[y;y;base]
 0i
 
 ```
