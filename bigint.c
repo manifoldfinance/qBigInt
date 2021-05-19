@@ -56,14 +56,14 @@ K add(K xxx, K yyy, K kbase)
   mpz_add(z, x, y);
 
   /* print for debug */
-  xss = mpz_get_str(NULL, base, x);
+  /* xss = mpz_get_str(NULL, base, x);
   yss = mpz_get_str(NULL, base, y);
   zss = mpz_get_str(NULL, base, z);
   printf("base = %i\n",base);
   printf("x = %s\ny = %s\nz = %s\n\n", xss, yss, zss);
   free(xss);
   free(yss);
-  free(zss);
+  free(zss); */
   /* end debug */
 
   free(xxss);
@@ -113,14 +113,14 @@ K sub(K xxx, K yyy, K kbase)
   mpz_sub(z, x, y);
 
   /* print for debug */
-  xss = mpz_get_str(NULL, base, x);
+  /* xss = mpz_get_str(NULL, base, x);
   yss = mpz_get_str(NULL, base, y);
   zss = mpz_get_str(NULL, base, z);
   printf("base = %i\n",base);
   printf("x = %s\ny = %s\nz = %s\n\n", xss, yss, zss);
   free(xss);
   free(yss);
-  free(zss);
+  free(zss); */
   /* end debug */
 
   free(xxss);
@@ -169,14 +169,14 @@ K mul(K xxx, K yyy, K kbase)
   mpz_mul(z, x, y);
 
   /* print for debug */
-  xss = mpz_get_str(NULL, base, x);
+  /* xss = mpz_get_str(NULL, base, x);
   yss = mpz_get_str(NULL, base, y);
   zss = mpz_get_str(NULL, base, z);
   printf("base = %i\n",base);
   printf("x = %s\ny = %s\nz = %s\n\n", xss, yss, zss);
   free(xss);
   free(yss);
-  free(zss);
+  free(zss); */
   /* end debug */
 
   free(xxss);
@@ -227,14 +227,14 @@ K divy(K xxx, K yyy, K kbase)
   mpz_tdiv_q(z, x, y);
 
   /* print for debug */
-  xss = mpz_get_str(NULL, base, x);
+  /*xss = mpz_get_str(NULL, base, x);
   yss = mpz_get_str(NULL, base, y);
   zss = mpz_get_str(NULL, base, z);
   printf("base = %i\n",base);
   printf("x = %s\ny = %s\nz = %s\n\n", xss, yss, zss);
   free(xss);
   free(yss);
-  free(zss);
+  free(zss); */
   /* end debug */
 
   free(xxss);
