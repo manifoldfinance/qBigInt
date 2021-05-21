@@ -20,7 +20,7 @@
 K add(K xxx, K yyy, K kbase)
 {
   mpz_t x, y, z;
-  char *xss, *yss, *zss;
+  //char *xss, *yss, *zss;
   int base = kbase->i;
   int xxxl = xxx->n;
   int yyyl = yyy->n;
@@ -80,7 +80,7 @@ K add(K xxx, K yyy, K kbase)
 K sub(K xxx, K yyy, K kbase)
 {
   mpz_t x, y, z;
-  char *xss, *yss, *zss;
+  //char *xss, *yss, *zss;
   int base = kbase->i;
   int xxxl = xxx->n;
   int yyyl = yyy->n;
@@ -136,7 +136,7 @@ K sub(K xxx, K yyy, K kbase)
 K mul(K xxx, K yyy, K kbase)
 {
   mpz_t x, y, z;
-  char *xss, *yss, *zss;
+  //char *xss, *yss, *zss;
   int base = kbase->i;
   int xxxl = xxx->n;
   int yyyl = yyy->n;
@@ -193,7 +193,7 @@ K mul(K xxx, K yyy, K kbase)
 K divy(K xxx, K yyy, K kbase)
 {
   mpz_t x, y, z;
-  char *xss, *yss, *zss;
+  //char *xss, *yss, *zss;
   int base = kbase->i;
   int xxxl = xxx->n;
   int yyyl = yyy->n;
