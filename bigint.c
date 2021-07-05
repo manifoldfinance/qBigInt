@@ -290,3 +290,37 @@ K cmp(K xxx, K yyy, K kbase)
   
   return ki(cmpy);
 }
+
+/* https://gmplib.org/manual/Integer-Roots */
+K sqroot(K xxx, K kbase)
+{
+  mpz_t x, z;
+  //char *xss, *yss, *zss;
+  int base = kbase->i;
+  int xxxl = xxx->n;
+  char * xxss = malloc((xxxl+1) * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kC(xxx)[pp];
+  }
+
+  /* Ensure null terminated string */
+  xxss[xxxl]=L'\0';
+
+  /* setting the value of x in base */
+  mpz_init_set_str(x, xxss, base);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  /* truncated integer part of the square root */
+  mpz_sqrt(z, x);
+
+  free(xxss);
+
+  K retz = kp(mpz_get_str(NULL, base, z));
+  mpz_clear(x);
+  mpz_clear(z);
+  return retz;
+}
