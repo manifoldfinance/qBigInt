@@ -324,3 +324,30 @@ K sqroot(K xxx, K kbase)
   mpz_clear(z);
   return retz;
 }
+
+/* https://gmplib.org/manual/Converting-Integers */
+K convert(K xxx, K k1base, K k2base)
+{
+  mpz_t x;
+  int frombase = k1base->i;
+  int tobase = k2base->i;
+  int xxxl = xxx->n;
+  char * xxss = malloc((xxxl+1) * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kC(xxx)[pp];
+  }
+
+  /* Ensure null terminated string */
+  xxss[xxxl]=L'\0';
+
+  /* setting the value of x in base */
+  mpz_init_set_str(x, xxss, frombase);
+
+  free(xxss);
+
+  K retz = kp(mpz_get_str(NULL, tobase, x));
+  mpz_clear(x);
+  return retz;
+}
