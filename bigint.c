@@ -351,3 +351,334 @@ K convert(K xxx, K k1base, K k2base)
   mpz_clear(x);
   return retz;
 }
+
+
+K addRaw(K xxx, K xxl, K yyy, K yyl)
+{
+  mpz_t x, y, z;
+  int xxxl = xxl->i;
+  int yyyl = yyl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+  unsigned char * yyss = malloc(yyyl * sizeof *yyss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%x", kG(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  //const char yyarr[lyy] = kp(yyy->s);
+  for (int pp = 0;pp<yyyl;pp++){
+    //printf("%x", kG(yyy)[pp]);
+    yyss[pp] = kG(yyy)[pp];
+  }
+
+  //printf("x = %s\ny = %s\n\n", xxss, yyss);
+  //printf("xt = %i\nyt = %i\n\n", xxx->t, yyy->t);
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* setting the value of y in base */
+  mpz_init(y);
+  mpz_import(y, yyyl, 1, 1, 0, 0, yyss);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  mpz_add(z, x, y);
+
+  free(xxss);
+  free(yyss);
+
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, z);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+
+  mpz_clear(x);
+  mpz_clear(y);
+  mpz_clear(z);
+  return retz;
+}
+
+
+K subRaw(K xxx, K xxl, K yyy, K yyl)
+{
+  mpz_t x, y, z;
+  int xxxl = xxl->i;
+  int yyyl = yyl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+  unsigned char * yyss = malloc(yyyl * sizeof *yyss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%x", kG(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  //const char yyarr[lyy] = kp(yyy->s);
+  for (int pp = 0;pp<yyyl;pp++){
+    //printf("%x", kG(yyy)[pp]);
+    yyss[pp] = kG(yyy)[pp];
+  }
+
+  //printf("x = %s\ny = %s\n\n", xxss, yyss);
+  //printf("xt = %i\nyt = %i\n\n", xxx->t, yyy->t);
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* setting the value of y in base */
+  mpz_init(y);
+  mpz_import(y, yyyl, 1, 1, 0, 0, yyss);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  mpz_sub(z, x, y);
+
+  free(xxss);
+  free(yyss);
+
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, z);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+
+  mpz_clear(x);
+  mpz_clear(y);
+  mpz_clear(z);
+  return retz;
+}
+
+K mulRaw(K xxx, K xxl, K yyy, K yyl)
+{
+  mpz_t x, y, z;
+  int xxxl = xxl->i;
+  int yyyl = yyl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+  unsigned char * yyss = malloc(yyyl * sizeof *yyss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%x", kG(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  //const char yyarr[lyy] = kp(yyy->s);
+  for (int pp = 0;pp<yyyl;pp++){
+    //printf("%x", kG(yyy)[pp]);
+    yyss[pp] = kG(yyy)[pp];
+  }
+
+  //printf("x = %s\ny = %s\n\n", xxss, yyss);
+  //printf("xt = %i\nyt = %i\n\n", xxx->t, yyy->t);
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* setting the value of y in base */
+  mpz_init(y);
+  mpz_import(y, yyyl, 1, 1, 0, 0, yyss);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  mpz_mul(z, x, y);
+
+  free(xxss);
+  free(yyss);
+
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, z);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+
+  mpz_clear(x);
+  mpz_clear(y);
+  mpz_clear(z);
+  return retz;
+}
+
+
+K divyRaw(K xxx, K xxl, K yyy, K yyl)
+{
+  mpz_t x, y, z;
+  int xxxl = xxl->i;
+  int yyyl = yyl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+  unsigned char * yyss = malloc(yyyl * sizeof *yyss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%x", kG(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  //const char yyarr[lyy] = kp(yyy->s);
+  for (int pp = 0;pp<yyyl;pp++){
+    //printf("%x", kG(yyy)[pp]);
+    yyss[pp] = kG(yyy)[pp];
+  }
+
+  //printf("x = %s\ny = %s\n\n", xxss, yyss);
+  //printf("xt = %i\nyt = %i\n\n", xxx->t, yyy->t);
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* setting the value of y in base */
+  mpz_init(y);
+  mpz_import(y, yyyl, 1, 1, 0, 0, yyss);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  mpz_tdiv_q(z, x, y);
+
+  free(xxss);
+  free(yyss);
+
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, z);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+
+  mpz_clear(x);
+  mpz_clear(y);
+  mpz_clear(z);
+  return retz;
+}
+
+
+K cmpRaw(K xxx, K xxl, K yyy, K yyl)
+{
+  mpz_t x, y;
+  int xxxl = xxl->i;
+  int yyyl = yyl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+  unsigned char * yyss = malloc(yyyl * sizeof *yyss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%x", kG(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  //const char yyarr[lyy] = kp(yyy->s);
+  for (int pp = 0;pp<yyyl;pp++){
+    //printf("%x", kG(yyy)[pp]);
+    yyss[pp] = kG(yyy)[pp];
+  }
+
+  //printf("x = %s\ny = %s\n\n", xxss, yyss);
+  //printf("xt = %i\nyt = %i\n\n", xxx->t, yyy->t);
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* setting the value of y in base */
+  mpz_init(y);
+  mpz_import(y, yyyl, 1, 1, 0, 0, yyss);
+
+  int cmpy = mpz_cmp(x, y);
+
+  free(xxss);
+  free(yyss);
+  mpz_clear(x);
+  mpz_clear(y);
+  
+  return ki(cmpy);
+}
+
+K sqrootRaw(K xxx, K xxl)
+{
+  mpz_t x, z;
+  int xxxl = xxl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  /* truncated integer part of the square root */
+  mpz_sqrt(z, x);
+
+  free(xxss);
+
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, z);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+  mpz_clear(x);
+  mpz_clear(z);
+  return retz;
+}
+
+/* https://gmplib.org/manual/Converting-Integers */
+K convertRaw(K xxx, K xxl, K k2base)
+{
+  mpz_t x;
+  int tobase = k2base->i;
+  int xxxl = xxl->i;
+  unsigned char * xxss = malloc((xxxl+1) * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  free(xxss);
+
+  K retz = kp(mpz_get_str(NULL, tobase, x));
+  mpz_clear(x);
+  return retz;
+}
