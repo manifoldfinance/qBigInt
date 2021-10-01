@@ -325,6 +325,41 @@ K sqroot(K xxx, K kbase)
   return retz;
 }
 
+/* https://gmplib.org/manual/Integer-Roots */
+K cuberoot(K xxx, K kbase)
+{
+  mpz_t x, z;
+  //char *xss, *yss, *zss;
+  int base = kbase->i;
+  int xxxl = xxx->n;
+  char * xxss = malloc((xxxl+1) * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kC(xxx)[pp];
+  }
+
+  /* Ensure null terminated string */
+  xxss[xxxl]=L'\0';
+
+  /* setting the value of x in base */
+  mpz_init_set_str(x, xxss, base);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  /* truncated integer part of the cube root */
+  mpz_root(z, x, 3);
+
+  free(xxss);
+
+  K retz = kp(mpz_get_str(NULL, base, z));
+  mpz_clear(x);
+  mpz_clear(z);
+  return retz;
+}
+
+
 /* https://gmplib.org/manual/Converting-Integers */
 K convert(K xxx, K k1base, K k2base)
 {
@@ -658,6 +693,46 @@ K sqrootRaw(K xxx, K xxl)
   mpz_clear(z);
   return retz;
 }
+
+K cuberootRaw(K xxx, K xxl)
+{
+  mpz_t x, z;
+  int xxxl = xxl->i;
+  unsigned char * xxss = malloc(xxxl * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kG(xxx)[pp];
+  }
+
+  /* setting the value of x in base */
+  mpz_init(x);
+  mpz_import(x, xxxl, 1, 1, 0, 0, xxss);
+
+  /* just initalizing the result variable */
+  mpz_init(z);
+
+  /* truncated integer part of the cube root */
+  mpz_root(z, x, 3);
+
+  free(xxss);
+
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, z);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+  mpz_clear(x);
+  mpz_clear(z);
+  return retz;
+}
+
 
 /* https://gmplib.org/manual/Converting-Integers */
 K convertRaw(K xxx, K xxl, K k2base)
