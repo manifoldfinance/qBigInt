@@ -847,6 +847,32 @@ K convertFloatToHexStr(K xxx)
 }
 
 /* https://gmplib.org/manual/Converting-Integers */
+K convertHexStrToFloat(K xxx)
+{
+  mpz_t x;
+  int xxxl = xxx->n;
+  char * xxss = malloc((xxxl+1) * sizeof *xxss);
+
+  for (int pp = 0;pp<xxxl;pp++){
+    //printf("%c", kC(xxx)[pp]);
+    xxss[pp] = kC(xxx)[pp];
+  }
+
+  /* Ensure null terminated string */
+  xxss[xxxl]=L'\0';
+
+  /* setting the value of x in base */
+  mpz_init_set_str(x, xxss, 16);
+
+  free(xxss);
+  
+  K retz = kf(mpz_get_d(x));
+  mpz_clear(x);
+  return retz;
+}
+
+
+/* https://gmplib.org/manual/Converting-Integers */
 K convertFloatToHex(K xxx)
 {
   mpz_t x;

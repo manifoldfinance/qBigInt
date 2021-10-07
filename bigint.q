@@ -20,5 +20,6 @@ powerRaw: `bigint 2:(`powerRaw;3)
 convertRaw: `bigint 2:(`convertRaw;3)
 convertFloatToHex: `bigint 2:(`convertFloatToHex;1);
 convertFloatToHexStr: `bigint 2:(`convertFloatToHexStr;1);
+convertHexStrToFloat: `bigint 2:(`convertHexStrToFloat;1);
 
 \d .
