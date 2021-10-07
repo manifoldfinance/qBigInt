@@ -18,5 +18,7 @@ sqrootRaw: `bigint 2:(`sqrootRaw;2)
 cuberootRaw: `bigint 2:(`cuberootRaw;2)
 powerRaw: `bigint 2:(`powerRaw;3)
 convertRaw: `bigint 2:(`convertRaw;3)
+convertFloatToHex: `bigint 2:(`convertFloatToHex;1);
+convertFloatToHexStr: `bigint 2:(`convertFloatToHexStr;1);
 
 \d .

@@ -832,3 +832,38 @@ K convertRaw(K xxx, K xxl, K k2base)
   mpz_clear(x);
   return retz;
 }
+
+
+/* https://gmplib.org/manual/Converting-Integers */
+K convertFloatToHexStr(K xxx)
+{
+  mpz_t x;
+  double xxxf = xxx->f;
+  mpz_init_set_d(x, xxxf);
+  
+  K retz = kp(mpz_get_str(NULL, 16, x));
+  mpz_clear(x);
+  return retz;
+}
+
+/* https://gmplib.org/manual/Converting-Integers */
+K convertFloatToHex(K xxx)
+{
+  mpz_t x;
+  double xxxf = xxx->f;
+  mpz_init_set_d(x, xxxf);
+  
+  unsigned char* buf;
+	size_t len;
+
+	buf = (unsigned char*) mpz_export(0, &len, 1, 1, 0, 0, x);
+
+  K retz = ktn(KG,len);
+  for (int pp = 0;pp<len;pp++){
+    kG(retz)[pp]=buf[pp];
+  }
+
+  free(buf);
+  mpz_clear(x);
+  return retz;
+}
