@@ -7,7 +7,6 @@ node_modules
 tmp/
 _dev/
 coverage/
-/dist
 /build
 
 *.tar
