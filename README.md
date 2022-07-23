@@ -1,26 +1,39 @@
-# qBigInt
+# [`qBigInt`](#)
 
-C library for Big Interger KDB+ Arithmetic
+> a C library for Big Interger KDB+ Arithmetic
 
-Functions: add, sub, mul, div, cmp
 
-Inputs: pass in x and y as strings of large numbers in base 2, 10 or 16 ... 62
+## Overview
 
-Outputs: string number in specified base
+**Function**: add, sub, mul, div, cmp
+
+**Inputs**: pass in x and y as strings of large numbers in base 2, 10 or 16 ... 62
+
+**Outputs**: string number in specified base
 
 ## Setup:
-Install GMP library with get_gmp.sh
 
-[GMP library website](https://gmplib.org/)
+Install GMP library with `get_gmp.sh`
+
+> [GMP library website](https://gmplib.org/)
 
 Compile C bigint libraries (examples for 64 bit kdb)
 
-- Windows dll compilation using VS: cl /LD /DKXVER=3 bigint.c bigint.def q.lib -lgmp
-- Linux so compilation using gcc: gcc -D KXVER=3 -Wall -fno-strict-aliasing -Wno-parentheses -g -O2 -shared -fPIC -o bigint.so bigint.c -lgmp
-- Mac so compilation using gcc: gcc -bundle -undefined dynamic_lookup bigint.c -o bigint.so -lgmp
-
-## Load function in kdb
+- Windows dll compilation using VS: `
+```bash
+    cl /LD /DKXVER=3 bigint.c bigint.def q.lib -lgmp
 ```
+- Linux so compilation using gcc: 
+```bash
+    gcc -D KXVER=3 -Wall -fno-strict-aliasing -Wno-parentheses -g -O2 -shared -fPIC -o bigint.so bigint.c -lgmp
+```
+- Mac so compilation using gcc:
+```bash
+    gcc -bundle -undefined dynamic_lookup bigint.c -o bigint.so -lgmp
+```
+## Load function in kdb
+
+```console
 bigAdd:`bigint 2:(`add;3)
 
 bigSub:`bigint 2:(`sub;3)
@@ -85,3 +98,21 @@ q)bigCmp[y;y;base]
 0i
 
 ```
+
+## License
+ 
+ Licensed under either of
+
+ * Universal Permissive License 1.0
+   ([LICENSE-UPL](LICENSE-UPL) or https://opensource.org/licenses/UPL)
+
+ * Apache License, Version 2.0
+   ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+ 
+ at your option.
+
+ ### Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you, as defined in the Universal Permissive License v 1.0 
+license, shall be dual licensed as above, without any additional terms or conditions.
